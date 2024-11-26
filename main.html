@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto RIA Menu</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Верхнє меню -->
+    <div class="top-menu">
+        
+        <div>
+            <a href="#">Ria.com</a>
+            <a href="#">Автомобілі</a>
+            <a href="#">Нерухомість</a>
+            <a href="#">Автозапчастини</a>
+            <a href="#">Збір на авто ЗСУ</a>
+        </div>
+      <div class="menu-right">
+            <a href="#" class="profile">
+                <i class="fa-regular fa-user"></i>
+                <i class="profile"></i> Увійти в кабінет
+            </a>
+        </div>
+    </div>
+
+    <!-- Нижнє меню -->
+    <div class="bottom-menu">
+      <div class="logo">
+            <div>auto</div>
+            <span class="ria-box">
+        <span class="ria-text">RIA</span>
+    </span>
+        </div>
+        <div class="menu-left">
+            
+            <div>
+                <a href="#">Вживані авто</a>
+                <a href="#">Нові авто</a>
+                <a href="#">Новини</a>
+                <a href="#">Контакти</a>
+            </div>
+        </div>
+        <div class="menu-right">
+            <a href="#" class="sell">Продати</a>
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </div>
+    <div class="search-container">
+          <!-- Ліва частина (search-tabs і search-form) -->
+        <div class="search-left">
+            <div class="search-tabs">
+                <button class="tab active" onclick="toggleVinBlock('all')">Всі</button>
+                <button class="tab" onclick="toggleVinBlock('used')">Вживані</button>
+                <button class="tab" onclick="toggleVinBlock('new')">Нові</button>
+                <button class="tab" onclick="toggleVinBlock('import')">Під пригон</button>
+            </div>
+            <div class="search-form">
+                <input type="text" placeholder="Легкові">
+                <input type="text" placeholder="Марка">
+                <input type="text" placeholder="Модель">
+                <input type="text" placeholder="Регіон">
+                <div class="double-fields">
+                    <input type="text" placeholder="Рік випуску">
+                    <input type="text" placeholder="Ціна">
+                </div>
+            </div>
+        </div>
+
+        <!-- Середня частина (vin-block і search-buttons) -->
+        <div class="search-middle">
+            <div class="vin-block" id="vin-block">
+                <label>
+                    <input type="checkbox">
+                    <span>Перевірений VIN</span>
+                </label>
+            </div>
+            <div class="search-buttons">
+                <button class="search-button">Пошук</button>
+                <button class="advanced-search-button">Розширений пошук</button>
+            </div>
+        </div>
+
+        <!-- Права частина (ad-container) -->
+        <div class="ad-container">
+            <img src="https://via.placeholder.com00x200" alt="Реклама">
+            <p>ПЕРСОНАЛЬНИЙ ПІДБІР НОВОГО АВТО ПІД УСІ ВАШІ «ХОЧУ»</p>
+        </div>
+    </div>
+
+    </div>
+    <div class="voice-search-container">
+      <!-- Ліва частина -->
+      <div class="voice-search-left">
+          <h2>Спробуйте нові функції пошуку</h2>
+          <p>з голосовим асистентом<br>від Auto.ria</p>
+          <button class="listen-button">Прослухати</button>
+          <p class="description">опис, споміжний текст з лінком</p>
+      </div>
+    <!-- Права частина -->
+    <div class="voice-search-right">
+        <div class="microphone">
+            <i class="fa-solid fa-microphone"></i>
+        </div>
+        <div class="sound-wave">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>Прослуховуємо...</p>
+    </div>
+</div>
+  <div class="slider-container">
+      <button class="slider-button prev" onclick="prevSlide()">&#x276E;</button>
+      <div class="slider">
+          <div class="slide active">
+              <img src="https://via.placeholder.com/1920x1080?text=Slide+1" alt="Slide 1">
+          </div>
+          <div class="slide">
+              <img src="https://via.placeholder.com/1920x1080?text=Slide+2" alt="Slide 2">
+          </div>
+          <div class="slide">
+              <img src="https://via.placeholder.com/1920x1080?text=Slide+3" alt="Slide 3">
+          </div>
+      </div>
+      <button class="slider-button next" onclick="nextSlide()">&#x276F;</button>
+      <div class="dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+      </div>
+  </div>
+<!-- Контейнер прокрутки -->
+
+  <div class="scroll-wrapper">
+    <div class="scroll-container">
+        <!-- Перший блок -->
+        <div class="scroll-item">
+            <h3>Можливості розміщення</h3>
+            <ul>
+                <li><input type="checkbox"> Просування авто в пошуку</li>
+                <li><input type="checkbox"> Вигоди на ТОП до -45%</li>
+                <li><input type="checkbox"> Вигоди на публікації до -45%</li>
+            </ul>
+        </div>
+
+        <!-- Другий блок -->
+        <div class="scroll-item">
+            <h3>Товари для авто</h3>
+            <ul>
+                <li><input type="checkbox"> Нові і б/у запчастини</li>
+                <li><input type="checkbox"> Шини та диски</li>
+                <li><input type="checkbox"> Гаражі по всій Україні</li>
+            </ul>
+        </div>
+
+        <!-- Третій блок -->
+        <div class="scroll-item">
+            <h3>Перед купівлею авто</h3>
+            <ul>
+                <li><input type="checkbox"> Відгуки власників авто</li>
+                <li><input type="checkbox"> Перевірені авто</li>
+                <li><input type="checkbox"> Офіційні тести з ПДР</li>
+            </ul>
+        </div>
+
+        <!-- Четвертий блок -->
+        <div class="scroll-item">
+            <h3>Пошук автомобілів</h3>
+            <ul>
+                <li><input type="checkbox">Пошук перевірених авто</li>
+                <li><input type="checkbox">Пошук нових авто</li>
+                <li><input type="checkbox">Пошук з-за кордону</li>
+            </ul>
+        </div>
+
+        <!-- П'ятий блок -->
+        <div class="scroll-item">
+            <h3>Автомобільні послуги</h3>
+            <ul>
+                <li><input type="checkbox">Митний калькулятор</li>
+                <li><input type="checkbox">Калькулятор середньої ціни</li>
+                <li><input type="checkbox">СТО</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
