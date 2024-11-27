@@ -158,19 +158,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector(".search-button").addEventListener("click", () => {
         const activeTab = document.querySelector(".tab.active").getAttribute("onclick").match(/'(\w+)'/)[1];
+
         // Збираємо значення з усіх полів
-        const vehicleType = document.querySelector("select[name='vehicleType']").value || null;
-        const brand = document.querySelector("input[name='brand']").value.trim() || null;
-        const model = document.querySelector("input[name='model']").value.trim() || null;
-        const region = document.querySelector("input[name='region']").value.trim() || null;
-        const year = document.querySelector("input[name='year']").value.trim() || null;
-        const priceFrom = document.querySelector("input[name='priceFrom']").value.trim() || null;
-        const priceTo = document.querySelector("input[name='priceTo']").value.trim() || null;
+        const vehicleType = document.querySelector("select[name='vehicleType']").value || "any";
+        const brand = document.querySelector("input[name='brand']").value.trim() || "";
+        const model = document.querySelector("input[name='model']").value.trim() || "";
+        const region = document.querySelector("input[name='region']").value.trim() || "";
+        const year = document.querySelector("input[name='year']").value.trim() || "";
+        const priceFrom = document.querySelector("input[name='priceFrom']").value.trim() || "";
+        const priceTo = document.querySelector("input[name='priceTo']").value.trim() || "";
 
         // Формуємо критерії пошуку
         const searchCriteria = {
             type: activeTab,
-            vehicleType: vehicleType === "any" ? null : vehicleType,
+            vehicleType,
             brand,
             model,
             region,
