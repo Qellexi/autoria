@@ -5,36 +5,100 @@ body {
 }
 
 /* Верхнє меню */
+/* Основний контейнер меню */
+/* Основний стиль контейнера меню */
 .top-menu {
-    background-color: #E8E8E8;
-    padding: 15px 25px;
+    background-color: #E8E8E8; /* Фон меню */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Розташування лівих і правих елементів */
     align-items: center;
+
+    position: relative;
+    z-index: 500;
 }
 
-.top-menu a {
+/* Стиль для лівого блоку меню */
+.top-menu .menu-left {
+    display: flex;
+}
+
+.top-menu .menu-left a {
     text-decoration: none;
-    color: #000;
-    margin: 0 10px;
+    color: #000; /* Чорний текст */
     font-size: 14px;
+    padding: 20px ; /* Збільшена зона кліку */
+    display: block; /* Виділення всієї площі */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Ховер-ефект для лівих пунктів меню */
+.top-menu .menu-left a:hover {
+    background-color: #DC6A51; /* Підсвітка при наведенні */
+    color: #fff; /* Білий текст */
+}
 
-.top-menu .profile {
+/* Стиль для правого блоку */
+.top-menu .menu-right {
     display: flex;
     align-items: center;
-    text-decoration: none;
+}
+
+/* Кнопка "Увійти в кабінет" */
+.dropbtn {
+    background-color: inherit;
+    border: none;
     color: #000;
-    margin-left: 15px;
-    font-size: 13px;
+    font-size: 14px;
+    padding: 20px 20px; /* Збільшена зона кліку */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Відстань між іконкою і текстом */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-.top-menu .profile .fa-user{
-    font-size: 22px; /* Задає розмір іконки */
-    color: #2B2F56; /* Колір іконки */
-    margin-left: 10px; /* Відступ зліва для кращого розташування */
-    cursor: pointer; /* Робить іконку виглядати як кнопка */
+
+.dropbtn:hover {
+    color: #DC6A51;
+
 }
+
+/* Випадаюче меню */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Позиція під кнопкою */
+    right: 0; /* Вирівнювання по правому краю */
+    background-color: #fff; /* Білий фон */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Тінь */
+    border-radius: 15px;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Стиль для пунктів випадаючого меню */
+.dropdown-content a {
+    color: #000; /* Чорний текст */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: #DC6A51;
+    color: #fff;
+}
+
+/* Показ випадаючого меню при наведенні */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 
 /* Нижнє меню */
@@ -83,24 +147,25 @@ body {
 }
 
 .bottom-menu .logo div {
-    background-color: #d9776b;
+    background-color: #DC6A51;
     color: #fff;
     font-weight: bold;
-    padding: 5px 10px;
-    height: 18px;
+    padding: 10px 15px;
+    height: 25px;
     margin-right: 2px;
-    border-radius: 0 0 0 5px;
+    border-radius: 0 0 0 10px;
+    font-size: 20px;
 }
 
 .bottom-menu .logo .ria-box {
     background-color: #2B2F56;
     color: #fff;
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 10px 15px;
     display: inline-block;
     position: relative;
-    width: 18px; 
-    height: 18px; 
+    width: 25px;
+    height: 25px;
     text-align: center;
 }
 
@@ -108,19 +173,19 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-14deg); /* Поворот тексту на 45 градусів */
+    transform: translate(-50%, -50%) rotate(-20deg); /* Поворот тексту на -14 градусів */
     display: inline-block;
-    font-size: 14px; /* Розмір тексту */
+    font-size: 22px;
     font-weight: bold;
-    color: #fff; /* Колір тексту */
+    color: #fff;
     font-family: Inter;
 }
 
 .bottom-menu .menu-right .fa-bars {
-    font-size: 24px; /* Задає розмір іконки */
+    font-size: 24px;
     color: #D9D9D9; /* Колір іконки */
-    margin-left: 10px; /* Відступ зліва для кращого розташування */
-    cursor: pointer; /* Робить іконку виглядати як кнопка */
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 /* Контейнер пошуку */
@@ -144,7 +209,7 @@ body {
 .search-tabs {
     display: flex;
     border: 2px solid #2B2F56; /* Загальна рамка для всіх вкладок */
-    border-radius: 10px; /* Округлені краї */
+    border-radius: 10px;
     overflow: hidden; /* Запобігає виходу вкладок за межі рамки */
     margin-bottom: 20px;
 }
@@ -152,9 +217,9 @@ body {
 /* Стилі для кожної вкладки */
 .tab {
     flex: 1; /* Всі вкладки рівної ширини */
-    padding: 10px 20px;
+    padding: 16px 20px;
     text-align: center;
-    background-color: #f1f1f1; /* Фоновий колір неактивних вкладок */
+    background-color: #f1f1f1;
     border: none; /* Видалення індивідуальних рамок */
     color: #2B2F56; /* Колір тексту */
     font-weight: bold;
@@ -165,13 +230,13 @@ body {
 /* Стиль для активної вкладки */
 .tab.active {
     background-color: #607dba; /* Фоновий колір активної вкладки */
-    color: #fff; 
-    pointer-events: none; /* Вимкнення ефекту наведення для активної вкладки */
+    color: #fff;
+    pointer-events: none;
 }
 
 /* Границя між вкладками */
 .tab:not(:last-child) {
-    border-right: 2px solid #2B2F56; /* Відділяє вкладки один від одного */
+    border-right: 2px solid #2B2F56;
 }
 
 /* Ховер-ефект для вкладок */
@@ -185,11 +250,23 @@ body {
     gap: 10px;
 }
 
-.search-form input {
-    
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.search-form input, .search-form select {
+    color: #2B2F56;
+    padding: 16px;
+    border: 1px solid #2B2F56;
+    border-radius: 10px;
+    font-size: 14px;
+    background-color: #fff;
+    appearance: none; /* Прибирає стандартний вигляд списку */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.search-form input:focus, .search-form select:focus {
+    outline: none;
+    border-color: #DC6A51;
+    box-shadow: 0 0 5px rgba(220, 106, 81, 0.5);
 }
 
 .double-fields {
@@ -200,9 +277,29 @@ body {
 .double-fields input {
     flex: 1;
 }
+.price-fields {
+    display: flex;
+    gap: 10px; /* Відстань між "Ціна від" та "Ціна до" */
+    flex: 1; /* Поля розтягуватимуться на всю ширину */
+}
 
+.price-fields input {
+    flex: 1; /* Поля однакової ширини */
+    padding: 16px;
+    border: 1px solid #2B2F56;
+    border-radius: 10px;
+    font-size: 14px;
+}
+.search-form select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%232B2F56' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 14px;
+    padding-right: 40px; /* Відступ для стрілки */
+}
 /* Середня частина */
 .search-middle {
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -210,44 +307,47 @@ body {
 }
 
 .vin-block label {
+    margin-top: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
     background-color: #2B2F56;
     color: #fff;
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 14px;
 }
 
 .vin-block input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: #d9776b;
+    accent-color: #DC6A51;
 }
 
 .search-buttons {
-    margin-top: 76px;
+    margin-top: 96px;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
 .search-button {
-    padding: 10px 20px;
-    background-color: #d9776b;
+    padding: 16px 20px;
+    background-color: #DC6A51;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .advanced-search-button {
-    padding: 10px 20px;
+    padding: 16px 20px;
     background-color: transparent;
-    border: 1px solid #607dba;
-    color: #607dba;
-    border-radius: 5px;
+    border: 1px solid #DC6A51;
+    color: #DC6A51;
+    font-weight: bold;
+    border-radius: 10px;
     cursor: pointer;
 }
 
@@ -255,13 +355,11 @@ body {
 .ad-container {
     flex: 1;
     text-align: center;
-    border: 1px solid #ddd;
     border-radius: 10px;
-    padding: 10px;
 }
 
 .ad-container img {
-    width: 100%;
+    width: 70%;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -276,8 +374,7 @@ body {
 .voice-search-container {
     display: flex;
     width: 100%;
-    height: 300px;
-    border-radius: 10px;
+    height: 360px;
     overflow: hidden;
 }
 
@@ -295,11 +392,18 @@ body {
 }
 
 .voice-search-left h2 {
-    font-size: 28px;
+    font-size: 32px;
     line-height: 1.4;
     margin-bottom: 15px;
-    font-weight: bold;
+    font-weight: 800;
     color: #2B2F56;
+    width: 50%;
+}
+.voice-search-left h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #e6e6e6;
+    font-weight: bold;
 }
 
 .voice-search-left p {
@@ -310,29 +414,32 @@ body {
 
 .voice-search-left p strong {
     color: #fff;
+    font-weight: bold;
 }
 
 .voice-search-left .description {
     font-size: 14px;
-    color: #d1d1d1;
+    color: #2B2F56;
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
 .voice-search-left .listen-button {
     padding: 10px 20px;
-    background-color: #f79468;
+    background-color: #DC6A51;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
+    border-radius: 15px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     width: auto; /* Кнопка займає лише потрібну ширину */
     text-align: center;
+    margin-top: 15px;
 }
 
 .voice-search-left .listen-button:hover {
-    background-color: #e17b50;
+    background-color: #DC6A51;
 }
 
 /* Права частина */
@@ -346,92 +453,211 @@ body {
     justify-content: center;
     color: #2B2F56;
 }
-
-.microphone {
-    width: 80px;
-    height: 80px;
-    background-color: #f79468;
-    border-radius: 50%;
+.microphone-container {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    width: 120px;
+    height: 120px;
+}
+
+.microphone {
+    width: 120px;
+    height: 120px;
+    background-color: #DC6A51;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 }
 
 .microphone i {
-    font-size: 36px;
+    font-size: 48px;
     color: #2B2F56;
 }
 
-/* Анімація звукових хвиль */
+.microphone.shrink {
+    width: 80px;
+    height: 80px;
+    transform: translateY(-10px);
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+/* Кола для звукових хвиль */
+.sound-circle {
+    position: absolute;
+    border: 2px solid rgba(220, 106, 81, 0.5);
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+    opacity: 0;
+    z-index: 1;
+}
+
+.sound-circle:nth-child(1) {
+    width: 160px;
+    height: 160px;
+    border: 3px solid rgba(220, 106, 81, 0.8);
+    animation-delay: 0s;
+}
+
+.sound-circle:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    border: 4px solid rgba(220, 106, 81, 0.6);
+    animation-delay: 0.2s;
+}
+
+.sound-circle:nth-child(3) {
+    width: 240px;
+    height: 240px;
+    border: 6px solid rgba(220, 106, 81, 0.4);
+    animation-delay: 0.4s;
+}
+
+.sound-circle:nth-child(4) {
+    width: 280px;
+    height: 280px;
+    border: 2px solid rgba(220, 106, 81, 0.2);
+    animation-delay: 0.6s;
+}
+
+.sound-circle.shrink {
+    animation: shrink-to-center 0.5s forwards;
+}
+
+/* Анімація пульсування */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+/* Анімація зникнення в мікрофон */
+@keyframes shrink-to-center {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
 .sound-wave {
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin-top: 20px;
     height: 20px;
+    opacity: 0; /* Початково приховано */
+    transition: opacity 0.3s ease;
 }
 
 .sound-wave span {
     display: block;
     width: 5px;
-    height: 100%;
+    height: 10px;
     margin: 0 3px;
-    background-color: #f79468;
+    background-color: #DC6A51;
     animation: wave-animation 1s infinite ease-in-out;
 }
 
-.sound-wave span:nth-child(1) {
-    animation-delay: 0s;
-}
-.sound-wave span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-.sound-wave span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-.sound-wave span:nth-child(4) {
-    animation-delay: 0.6s;
-}
-.sound-wave span:nth-child(5) {
-    animation-delay: 0.8s;
+.sound-wave span:nth-child(1) { animation-delay: 0s; }
+.sound-wave span:nth-child(2) { animation-delay: 0.2s; }
+.sound-wave span:nth-child(3) { animation-delay: 0.4s; }
+.sound-wave span:nth-child(4) { animation-delay: 0.6s; }
+.sound-wave span:nth-child(5) { animation-delay: 0.8s; }
+
+.listening-text {
+    font-size: 16px;
+    color: #2B2F56;
+    margin-top: 10px;
+    opacity: 0; /* Початково приховано */
+    transition: opacity 0.3s ease;
 }
 
-/* Анімація хвиль */
-@keyframes wave-animation {
-    0%, 100% {
-        height: 10px;
-    }
-    50% {
-        height: 20px;
-    }
+.hidden {
+    display: none;
 }
+
+@keyframes wave-animation {
+    0%, 100% { height: 10px; }
+    50% { height: 20px; }
+}
+
 
 .voice-search-right p {
     font-size: 16px;
     color: #2B2F56;
     margin-top: 10px;
 }
+/* результат пошуку */
+
+.search-results {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    display: none; /* Сховати за замовчуванням */
+}
+
+.search-results h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #2B2F56;
+}
+
+.result-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 15px;
+}
+
+.result-item img {
+    width: 120px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.result-item .details {
+    flex: 1;
+}
+
+.result-item .details h4 {
+    font-size: 16px;
+    color: #DC6A51;
+    margin: 0;
+}
+
+.result-item .details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2B2F56;
+}
+
 /* Слайдер */
 .slider-container {
     position: relative;
     width: 100%; /* Повна ширина сторінки */
-    height: 100vh; /* Висота екрану */
+    height: 90vh; /* Висота екрану */
     overflow: hidden;
     background-color: #e6e6e6;
-}
-
-.slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    height: 100%;
-}
-
-.slide {
-    min-width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .slide img {
@@ -440,19 +666,61 @@ body {
     object-fit: cover; /* Забезпечує масштабування зображення без спотворення */
 }
 
+/* Слайди з плавним зникненням/появою */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* Точки навігації */
+.dots {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #ffffff;
+    transform: scale(1.2);
+}
+
 /* Кнопки слайдера */
 .slider-button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5); /* Прозорий чорний фон */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     border: none;
-    font-size: 36px;
-    color: #fff;
+    padding: 10px;
     cursor: pointer;
     z-index: 10;
-    padding: 10px 10px;
-    border-radius: 5px;
 }
 
 .slider-button.prev {
@@ -467,37 +735,16 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Точки навігації */
-.dots {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    gap: 10px;
-}
-
-.dot {
-    width: 12px;
-    height: 12px;
-    background-color: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.dot.active {
-    background-color: #555;
-}
 /* Контейнер прокрутки */
 /* Обгортка для прокрутки */
 .scroll-wrapper {
     display: flex;
     justify-content: center; /* Центрує контейнер по горизонталі */
     align-items: center; /* Центрує контейнер по вертикалі */
-    width: 100%; /* Займає всю ширину сторінки */
-    height: auto; /* Висота автоматично підлаштовується */
-    margin: 20px auto; /* Відступи зверху і знизу */
+    width: 80%; /* Зменшена ширина прокрутки */
+    max-width: 960px; /* Максимальна ширина для великих екранів */
+    height: auto;
+    margin: 20px auto;
 }
 
 /* Контейнер для горизонтальної прокрутки */
@@ -507,8 +754,27 @@ body {
     overflow-x: auto; /* Горизонтальна прокрутка */
     scroll-snap-type: x mandatory; /* Прив'язка до блоків */
     padding: 20px; /* Внутрішні відступи */
-    width: 930px; /* Ширина для відображення 3 блоків */
     justify-content: flex-start; /* Вирівнювання контенту */
+    position: relative; /* Позиціювання для додаткових елементів */
+}
+
+/* Зменшення довжини смуги прокрутки */
+.scroll-container::-webkit-scrollbar {
+    height: 6px; /* Висота смуги прокрутки */
+    margin-left: 20%;
+    margin-right: 30%;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #718BAE; /* Колір повзунка */
+    border-radius: 10px; /* Округлені краї */
+    width: 70%; /* Зміна ширини */
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: #ddd; /* Колір фону */
+    border-radius: 10px;
+    margin: 0 50%;
 }
 
 /* Блоки прокрутки */
@@ -559,3 +825,202 @@ body {
     background-color: #ddd;
     border-radius: 10px;
 }
+.footer {
+    background-color: #f8f8f8;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.footer-top {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.footer-left {
+    flex: 1;
+    margin-right: 50px;
+}
+
+.footer-left h3 {
+    font-size: 24px;
+    color: #000;
+    margin-bottom: 5px;
+}
+.footer-left h4 {
+    font-size: 22px;
+    color: #000;
+}
+
+.footer-left p {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.app-links {
+    display: flex; /* Вирівнювання іконок у рядок */
+    gap: 20px; /* Відстань між іконками */
+    margin-top: 15px; /* Додатковий верхній відступ */
+}
+
+.app-links a {
+    color: #2B2F56; /* Основний колір іконок */
+    font-size: 40px; /* Збільшений розмір іконок */
+    transition: color 0.3s ease;
+}
+
+.app-links a:hover {
+    color: #DC6A51; /* Зміна кольору при наведенні */
+}
+
+.footer-right {
+    flex: 2;
+    display: flex;
+    gap: 30px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-links h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #000;
+}
+.footer-links a {
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #DC6A51;
+}
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 5px;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #607dba;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #E8E8E8;
+    padding: 5px 20px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-links p {
+    margin-right: 20px;
+}
+
+/* Іконки соціальних мереж */
+.social-links a {
+    color: #2B2F56;
+    font-size: 30px;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #DC6A51;
+}
+
+.footer-support {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-support button {
+    background-color: #607dba;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.footer-support button:hover {
+    background-color: #506aa7;
+}
+.search-page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.filters-container {
+    width: 30%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.results-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.results-container h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #2B2F56;
+}
+
+.result-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.result-item img {
+    width: 120px;
+    height: 80px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.result-item .details {
+    flex: 1;
+}
+
+.result-item .details h4 {
+    font-size: 16px;
+    color: #DC6A51;
+    margin: 0;
+}
+
+.result-item .details p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #2B2F56;
+}
+
+
