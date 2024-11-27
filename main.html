@@ -4,72 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto RIA Menu</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Верхнє меню -->
-    <div class="top-menu">
-        
-        <div>
-            <a href="#">Ria.com</a>
-            <a href="#">Автомобілі</a>
-            <a href="#">Нерухомість</a>
-            <a href="#">Автозапчастини</a>
-            <a href="#">Збір на авто ЗСУ</a>
-        </div>
-      <div class="menu-right">
-            <a href="#" class="profile">
-                <i class="fa-regular fa-user"></i>
-                <i class="profile"></i> Увійти в кабінет
-            </a>
+<!-- Верхнє меню -->
+<div class="top-menu">
+    <div class="menu-left">
+        <a href="#">Ria.com</a>
+        <a href="#">Автомобілі</a>
+        <a href="#">Нерухомість</a>
+        <a href="#">Автозапчастини</a>
+        <a href="#">Збір на авто ЗСУ</a>
+    </div>
+    <div class="menu-right">
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-user"></i> Увійти в кабінет
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Вхід</a>
+                <a href="#">Реєстрація</a>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Нижнє меню -->
-    <div class="bottom-menu">
-      <div class="logo">
-            <div>auto</div>
-            <span class="ria-box">
-        <span class="ria-text">RIA</span>
-    </span>
-        </div>
-        <div class="menu-left">
-            
-            <div>
-                <a href="#">Вживані авто</a>
-                <a href="#">Нові авто</a>
-                <a href="#">Новини</a>
-                <a href="#">Контакти</a>
-            </div>
-        </div>
-        <div class="menu-right">
-            <a href="#" class="sell">Продати</a>
-            <i class="fa-solid fa-bars"></i>
+
+<!-- Нижнє меню -->
+<div class="bottom-menu">
+    <div class="logo">
+        <div>auto</div>
+        <span class="ria-box">
+            <span class="ria-text">RIA</span>
+        </span>
+    </div>
+    <div class="menu-left">
+
+        <div>
+            <a href="#">Вживані авто</a>
+            <a href="#">Нові авто</a>
+            <a href="#">Новини</a>
+            <a href="#">Контакти</a>
         </div>
     </div>
-    <div class="search-container">
-          <!-- Ліва частина (search-tabs і search-form) -->
-        <div class="search-left">
-            <div class="search-tabs">
-                <button class="tab active" onclick="toggleVinBlock('all')">Всі</button>
-                <button class="tab" onclick="toggleVinBlock('used')">Вживані</button>
-                <button class="tab" onclick="toggleVinBlock('new')">Нові</button>
-                <button class="tab" onclick="toggleVinBlock('import')">Під пригон</button>
-            </div>
-            <div class="search-form">
-                <input type="text" placeholder="Легкові">
-                <input type="text" placeholder="Марка">
-                <input type="text" placeholder="Модель">
-                <input type="text" placeholder="Регіон">
-                <div class="double-fields">
-                    <input type="text" placeholder="Рік випуску">
-                    <input type="text" placeholder="Ціна">
+    <div class="menu-right">
+        <a href="#" class="sell">Продати</a>
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    </div>
+<div class="search-container">
+    <!-- Ліва частина (search-tabs і search-form) -->
+    <div class="search-left">
+        <div class="search-tabs">
+            <button class="tab active" onclick="toggleVinBlock('all')">Всі</button>
+            <button class="tab" onclick="toggleVinBlock('used')">Вживані</button>
+            <button class="tab" onclick="toggleVinBlock('new')">Нові</button>
+            <button class="tab" onclick="toggleVinBlock('import')">Під пригон</button>
+        </div>
+        <div class="search-form">
+            <select class="dropdown" name="vehicleType">
+                <option value="any">Будь-який</option>
+                <option value="легкові">Легкові</option>
+                <option value="мото">Мото</option>
+                <option value="вантажівки">Вантажівки</option>
+                <option value="причепи">Причепи</option>
+                <option value="спецтехніка">Спецтехніка</option>
+                <option value="сільгосптехніка">Сільгосптехніка</option>
+                <option value="автобуси">Автобуси</option>
+                <option value="водний">Водний транспорт</option>
+                <option value="повітряний">Повітряний транспорт</option>
+                <option value="автобудинки">Автобудинки</option>
+            </select>
+            <input type="text" name="brand" placeholder="Марка">
+            <input type="text" name="model" placeholder="Модель">
+            <input type="text" name="region" placeholder="Регіон">
+            <div class="double-fields">
+                <input type="number" name="year" placeholder="Рік випуску">
+                <div class="price-fields">
+                    <input type="number" name="priceFrom" placeholder="Ціна ₴ від">
+                    <input type="number" name="priceTo" placeholder="Ціна ₴ до">
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- Середня частина (vin-block і search-buttons) -->
+
+    <!-- Середня частина (vin-block і search-buttons) -->
         <div class="search-middle">
             <div class="vin-block" id="vin-block">
                 <label>
@@ -85,54 +106,63 @@
 
         <!-- Права частина (ad-container) -->
         <div class="ad-container">
-            <img src="https://via.placeholder.com00x200" alt="Реклама">
-            <p>ПЕРСОНАЛЬНИЙ ПІДБІР НОВОГО АВТО ПІД УСІ ВАШІ «ХОЧУ»</p>
+            <img src="ad.jpg" alt="Реклама">
         </div>
     </div>
 
+<div class="voice-search-container">
+    <!-- Ліва частина -->
+    <div class="voice-search-left">
+        <h2>Спробуйте нові функції пошуку</h2>
+        <h3>з голосовим асистентом<br>від Auto.ria</h3>
+        <button class="listen-button">Прослухати</button>
+        <p class="description">опис, споміжний текст з лінком</p>
     </div>
-    <div class="voice-search-container">
-      <!-- Ліва частина -->
-      <div class="voice-search-left">
-          <h2>Спробуйте нові функції пошуку</h2>
-          <p>з голосовим асистентом<br>від Auto.ria</p>
-          <button class="listen-button">Прослухати</button>
-          <p class="description">опис, споміжний текст з лінком</p>
-      </div>
     <!-- Права частина -->
     <div class="voice-search-right">
-        <div class="microphone">
-            <i class="fa-solid fa-microphone"></i>
+        <div class="microphone-container">
+            <div class="sound-circle"></div>
+            <div class="sound-circle"></div>
+            <div class="sound-circle"></div>
+            <div class="microphone">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
         </div>
-        <div class="sound-wave">
+
+        <div class="sound-wave hidden">
             <span></span><span></span><span></span><span></span><span></span>
         </div>
-        <p>Прослуховуємо...</p>
+        <p class="listening-text hidden">Прослуховуємо...</p>
     </div>
 </div>
-  <div class="slider-container">
-      <button class="slider-button prev" onclick="prevSlide()">&#x276E;</button>
-      <div class="slider">
-          <div class="slide active">
-              <img src="https://via.placeholder.com/1920x1080?text=Slide+1" alt="Slide 1">
-          </div>
-          <div class="slide">
-              <img src="https://via.placeholder.com/1920x1080?text=Slide+2" alt="Slide 2">
-          </div>
-          <div class="slide">
-              <img src="https://via.placeholder.com/1920x1080?text=Slide+3" alt="Slide 3">
-          </div>
-      </div>
-      <button class="slider-button next" onclick="nextSlide()">&#x276F;</button>
-      <div class="dots">
-          <span class="dot active" onclick="goToSlide(0)"></span>
-          <span class="dot" onclick="goToSlide(1)"></span>
-          <span class="dot" onclick="goToSlide(2)"></span>
-      </div>
-  </div>
+<div class="search-results">
+    <h3>Результати пошуку:</h3>
+    <div id="results-container"></div>
+</div>
+
+<div class="slider-container">
+    <button class="slider-button prev" onclick="prevSlide()">&#x276E;</button>
+    <div class="slider">
+        <div class="slide active">
+            <img src="car1.jpg" alt="Slide 0">
+        </div>
+        <div class="slide">
+            <img src="car1_1.jpg" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="car1_2.jpg" alt="Slide 2">
+        </div>
+    </div>
+    <button class="slider-button next" onclick="nextSlide()">&#x276F;</button>
+    <div class="dots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
+</div>
 <!-- Контейнер прокрутки -->
 
-  <div class="scroll-wrapper">
+<div class="scroll-wrapper">
     <div class="scroll-container">
         <!-- Перший блок -->
         <div class="scroll-item">
@@ -185,6 +215,70 @@
         </div>
     </div>
 </div>
+<script src="script.js"></script>
 
 </body>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-left">
+            <h3>AUTO.RIA</h3>
+            <h4>У вашому смартфоні</h4>
+            <p>Все для купівлі та продажу авто в додатку AUTO.RIA</p>
+            <div class="app-links">
+                <a href="#"><i class="fa-brands fa-app-store"></i></a>
+                <a href="#"><i class="fa-brands fa-google-play"></i></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <div>
+                    <h4>Вживані авто</h4>
+                    <ul>
+                        <li><a href="#">Автобазар</a></li>
+                        <li><a href="#">Авто з США</a></li>
+                        <li><a href="#">Причепи авто</a></li>
+                        <li><a href="#">GARAЖ AUTO.RIA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Нові авто</h4>
+                    <ul>
+                        <li><a href="#">Автосалони</a></li>
+                        <li><a href="#">Мотоцикли</a></li>
+                        <li><a href="#">Спецтехніка</a></li>
+                        <li><a href="#">Автотовари AUTO.RIA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Всі послуги для авто</h4>
+                    <ul>
+                        <li><a href="#">СТО</a></li>
+                        <li><a href="#">Гаражі</a></li>
+                        <li><a href="#">Послуги</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Новини</h4>
+                    <ul>
+                        <li><a href="#">Тест-драйви</a></li>
+                        <li><a href="#">Електромобілі</a></li>
+                        <li><a href="#">Розмитнення</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="social-links">
+            <p>Приєднуйтесь до спільноти автомобілістів AUTO.RIA</p>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-support">
+            <h4>Допомога по сайту AUTO.RIA.com</h4>
+            <button>Написати нам</button>
+        </div>
+    </div>
+</footer>
 </html>
