@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результати пошуку</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Верхнє меню -->
+<div class="top-menu">
+    <div class="menu-left">
+        <a href="#">Ria.com</a>
+        <a href="#">Автомобілі</a>
+        <a href="#">Нерухомість</a>
+        <a href="#">Автозапчастини</a>
+        <a href="#">Збір на авто ЗСУ</a>
+    </div>
+    <div class="menu-right">
+        <div class="dropdown">
+            <button class="dropbtn">
+                <i class="fa fa-user"></i> Увійти в кабінет
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Вхід</a>
+                <a href="#">Реєстрація</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Нижнє меню -->
+<div class="bottom-menu">
+    <div class="logo">
+        <div>auto</div>
+        <span class="ria-box">
+                <span class="ria-text">RIA</span>
+            </span>
+    </div>
+    <div class="menu-left">
+        <div>
+            <a href="#">Вживані авто</a>
+            <a href="#">Нові авто</a>
+            <a href="#">Новини</a>
+            <a href="#">Контакти</a>
+        </div>
+    </div>
+    <div class="menu-right">
+        <a href="#" class="sell">Продати</a>
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</div>
+
+<!-- Результати пошуку -->
+<div class="results-container">
+    <div id="search-parameters"></div>
+    <div id="results-container"></div>
+</div>
+
+<!-- Слайдер -->
+<div class="slider-container">
+    <button class="slider-button prev">&#x276E;</button>
+    <div class="slider">
+        <div class="slide active">
+            <img src="car1.jpg" alt="Slide 1">
+        </div>
+        <div class="slide">
+            <img src="car2.jpg" alt="Slide 2">
+        </div>
+        <div class="slide">
+            <img src="car3.jpg" alt="Slide 3">
+        </div>
+    </div>
+    <button class="slider-button next">&#x276F;</button>
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<!-- Скрипти -->
+<script src="result_script.js"></script>
+<script src="script.js"></script>
+</body>
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-left">
+            <h3>AUTO.RIA</h3>
+            <h4>У вашому смартфоні</h4>
+            <p>Все для купівлі та продажу авто в додатку AUTO.RIA</p>
+            <div class="app-links">
+                <a href="#"><i class="fa-brands fa-app-store"></i></a>
+                <a href="#"><i class="fa-brands fa-google-play"></i></a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <div>
+                    <h4>Вживані авто</h4>
+                    <ul>
+                        <li><a href="#">Автобазар</a></li>
+                        <li><a href="#">Авто з США</a></li>
+                        <li><a href="#">Причепи авто</a></li>
+                        <li><a href="#">GARAЖ AUTO.RIA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Нові авто</h4>
+                    <ul>
+                        <li><a href="#">Автосалони</a></li>
+                        <li><a href="#">Мотоцикли</a></li>
+                        <li><a href="#">Спецтехніка</a></li>
+                        <li><a href="#">Автотовари AUTO.RIA</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Всі послуги для авто</h4>
+                    <ul>
+                        <li><a href="#">СТО</a></li>
+                        <li><a href="#">Гаражі</a></li>
+                        <li><a href="#">Послуги</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Новини</h4>
+                    <ul>
+                        <li><a href="#">Тест-драйви</a></li>
+                        <li><a href="#">Електромобілі</a></li>
+                        <li><a href="#">Розмитнення</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="social-links">
+            <p>Приєднуйтесь до спільноти автомобілістів AUTO.RIA</p>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        <div class="footer-support">
+            <h4>Допомога по сайту AUTO.RIA.com</h4>
+            <button>Написати нам</button>
+        </div>
+    </div>
+</footer>
+</html>
