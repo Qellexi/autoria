@@ -1,4 +1,4 @@
-// Масив машин для пошуку
+// Масив автомобілів
 const cars = [
     {
         id: 1,
@@ -46,37 +46,41 @@ const cars = [
     },
 ];
 
-// Зчитування параметрів з URL
-const urlParams = new URLSearchParams(window.location.search);
-const criteria = {
-    type: urlParams.get("type"),
-    vehicleType: urlParams.get("vehicleType"),
-    brand: urlParams.get("brand"),
-    model: urlParams.get("model"),
-    region: urlParams.get("region"),
-    year: urlParams.get("year") ? parseInt(urlParams.get("year")) : null,
-    priceFrom: urlParams.get("priceFrom") ? parseInt(urlParams.get("priceFrom")) : null,
-    priceTo: urlParams.get("priceTo") ? parseInt(urlParams.get("priceTo")) : null,
+// Отримання параметрів пошуку з URL
+const params = new URLSearchParams(window.location.search);
+
+// Зчитуємо критерії пошуку з URL
+const searchCriteria = {
+    type: params.get("type") || "all",
+    vehicleType: params.get("vehicleType") !== "any" ? params.get("vehicleType") : null,
+    brand: params.get("brand") || null,
+    model: params.get("model") || null,
+    region: params.get("region") || null,
+    year: params.get("year") ? parseInt(params.get("year")) : null,
+    priceFrom: params.get("priceFrom") ? parseInt(params.get("priceFrom")) : null,
+    priceTo: params.get("priceTo") ? parseInt(params.get("priceTo")) : null,
 };
 
-// Фільтрація результатів
-const filteredCars = cars.filter(car => {
+// Фільтруємо результати
+const results = cars.filter(car => {
     return (
-        (!criteria.type || criteria.type === "all" || car.type === criteria.type) &&
-        (!criteria.vehicleType || car.vehicleType.toLowerCase() === criteria.vehicleType.toLowerCase()) &&
-        (!criteria.brand || car.brand.toLowerCase().includes(criteria.brand.toLowerCase())) &&
-        (!criteria.model || car.model.toLowerCase().includes(criteria.model.toLowerCase())) &&
-        (!criteria.region || car.region.toLowerCase().includes(criteria.region.toLowerCase())) &&
-        (!criteria.year || car.year === criteria.year) &&
-        (!criteria.priceFrom || car.price >= criteria.priceFrom) &&
-        (!criteria.priceTo || car.price <= criteria.priceTo)
+        (searchCriteria.type === "all" || car.type === searchCriteria.type) &&
+        (!searchCriteria.vehicleType || car.vehicleType.toLowerCase() === searchCriteria.vehicleType.toLowerCase()) &&
+        (!searchCriteria.brand || car.brand.toLowerCase().includes(searchCriteria.brand.toLowerCase())) &&
+        (!searchCriteria.model || car.model.toLowerCase().includes(searchCriteria.model.toLowerCase())) &&
+        (!searchCriteria.region || car.region.toLowerCase().includes(searchCriteria.region.toLowerCase())) &&
+        (!searchCriteria.year || car.year === searchCriteria.year) &&
+        (!searchCriteria.priceFrom || car.price >= searchCriteria.priceFrom) &&
+        (!searchCriteria.priceTo || car.price <= searchCriteria.priceTo)
     );
 });
-
-// Відображення результатів
 function displayResults(results, criteria) {
     const resultsContainer = document.getElementById("results-container");
 
+    // Очищуємо контейнер
+    resultsContainer.innerHTML = "";
+
+    // Відображення критеріїв пошуку
     resultsContainer.innerHTML = `
         <h4>Пошук за критеріями:</h4>
         <ul>
@@ -110,4 +114,6 @@ function displayResults(results, criteria) {
     }
 }
 
-displayResults(filteredCars, criteria);
+// Відображаємо результати
+displayResults(results, searchCriteria);
+
