@@ -6,6 +6,7 @@
     <title>Результати пошуку</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles_r_s.css">
 </head>
 <body>
 <!-- Верхнє меню -->
@@ -54,10 +55,23 @@
 
 <!-- Результати пошуку -->
 <div class="results-container">
-    <div id="search-parameters"></div>
-    <div id="results-container"></div>
-</div>
+    <!-- Панель фільтрів -->
+    <div class="search-filters">
+        <strong>Пошукові параметри:</strong>
+        <div id="filter-tags" class="filter-tags">
+            <!-- Теги пошуку будуть динамічно додані сюди -->
+        </div>
+        <button class="refine-search-btn" onclick="refineSearch()">Уточнити пошук</button>
+    </div>
 
+
+    <!-- Список результатів -->
+    <div id="results-container">
+        <h3>Результати:</h3>
+        <p>Список авто або повідомлення про відсутність результатів.</p>
+    </div>
+</div>
+\
 <!-- Слайдер -->
 <div class="slider-container">
     <button class="slider-button prev">&#x276E;</button>
