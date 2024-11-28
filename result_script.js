@@ -117,3 +117,66 @@ function displayResults(results, criteria) {
 // Відображаємо результати
 displayResults(results, searchCriteria);
 
+// Масив для динамічного відображення фільтрів
+let searchFilters = Object.entries(searchCriteria)
+    .filter(([key, value]) => value && value !== "all" && value !== "any")
+    .map(([key, value]) => ({ name: `${capitalizeFirstLetter(key)}: ${value}`, key, value }));
+
+// Відображення фільтрів
+function renderFilters() {
+    const filterContainer = document.getElementById("filter-tags");
+    filterContainer.innerHTML = ""; // Очищаємо попередні фільтри
+
+    searchFilters.forEach((filter, index) => {
+        const tag = document.createElement("div");
+        tag.classList.add("filter-tag");
+        tag.innerHTML = `
+            ${filter.name} 
+            <span class="remove-filter" onclick="removeFilter(${index})">✖</span>
+        `;
+        filterContainer.appendChild(tag);
+    });
+}
+
+// Видалення фільтру
+function removeFilter(index) {
+    const filterToRemove = searchFilters[index];
+    delete searchCriteria[filterToRemove.key]; // Видаляємо критерій з об'єкта
+    searchFilters.splice(index, 1); // Видаляємо з локального масиву
+    renderFilters();
+    updateResults(); // Перезапуск фільтрації
+}
+
+// Перезапуск результатів пошуку
+function updateResults() {
+    const updatedResults = cars.filter(car => {
+        return (
+            (!searchCriteria.type || searchCriteria.type === "all" || car.type === searchCriteria.type) &&
+            (!searchCriteria.vehicleType || car.vehicleType.toLowerCase() === searchCriteria.vehicleType.toLowerCase()) &&
+            (!searchCriteria.brand || car.brand.toLowerCase().includes(searchCriteria.brand.toLowerCase())) &&
+            (!searchCriteria.model || car.model.toLowerCase().includes(searchCriteria.model.toLowerCase())) &&
+            (!searchCriteria.region || car.region.toLowerCase().includes(searchCriteria.region.toLowerCase())) &&
+            (!searchCriteria.year || car.year === searchCriteria.year) &&
+            (!searchCriteria.priceFrom || car.price >= searchCriteria.priceFrom) &&
+            (!searchCriteria.priceTo || car.price <= searchCriteria.priceTo)
+        );
+    });
+    displayResults(updatedResults, searchCriteria);
+}
+
+// Уточнення пошуку
+function refineSearch() {
+    alert("Відкрити форму уточнення пошуку"); // Замініть на відповідний функціонал
+}
+
+// Допоміжна функція для форматування назв
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+// Початкове відображення фільтрів і результатів
+document.addEventListener("DOMContentLoaded", () => {
+    renderFilters();
+    displayResults(results, searchCriteria);
+});
+
