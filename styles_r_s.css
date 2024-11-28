@@ -1,0 +1,53 @@
+/* Панель фільтрів */
+.search-filters {
+    background-color: #fef3e2;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-tag {
+    background-color: #dc6a51;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.filter-tag .remove-filter {
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.refine-search-btn {
+    padding: 8px 16px;
+    border: 1px solid #2b2f56;
+    background-color: #ffffff;
+    color: #2b2f56;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.refine-search-btn:hover {
+    background-color: #2b2f56;
+    color: #ffffff;
+}
