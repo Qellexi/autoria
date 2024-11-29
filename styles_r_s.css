@@ -1,6 +1,6 @@
 /* Панель фільтрів */
 .search-filters {
-    background-color: #fef3e2;
+    background-color: #718BAE;
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
@@ -9,6 +9,7 @@
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
+    color: white;
 }
 
 .filter-tags {
@@ -51,3 +52,209 @@
     background-color: #2b2f56;
     color: #ffffff;
 }
+/* Загальний контейнер для результатів пошуку */
+.search-results-container {
+    display: flex;
+    gap: 20px; /* Відстань між фільтрами та результатами */
+    margin-top: 20px;
+}
+
+/* Панель фільтрів (ліворуч) */
+.filters-panel {
+    width: 25%; /* Ширина лівої колонки */
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Список результатів (праворуч) */
+.results-panel {
+    flex: 1; /* Займає решту простору */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Результати пошуку */
+.results-container {
+    margin-top: 20px;
+}
+
+.result-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px 0;
+    align-items: flex-start;
+}
+
+.result-image img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.result-details {
+    flex: 1;
+}
+
+.result-details h4 {
+    font-size: 18px;
+    color: #2B2F56;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 16px;
+    color: #DC6A51;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price span {
+    font-size: 14px;
+    color: #777;
+}
+
+.details-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #555;
+    font-size: 14px;
+}
+
+.details-list li {
+    white-space: nowrap;
+}
+
+.identifiers {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+    color: #888;
+    margin: 10px 0;
+}
+
+.customs-label {
+    background: #dcf2e5;
+    color: #27ae60;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.date-added {
+    font-size: 12px;
+    color: #888;
+    margin-top: 5px;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
+
+.advanced-search-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 100%; /* Адаптація до ширини контейнера */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Дозволяє переносити елементи на наступний рядок */
+}
+
+.search-row label {
+    flex: 1 0 150px; /* Лейбл має займати мінімум 150px */
+    font-size: 14px;
+    color: #2b2f56;
+}
+.search-row input,
+.search-row select {
+    flex: 2 1 auto; /* Поля заповнюють залишковий простір */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Відступи всередині враховуються */
+}
+.double-input {
+    display: flex;
+    gap: 10px; /* Відстань між полями "Від" та "До" */
+    flex: 2 1 auto; /* Поля заповнюють залишковий простір */
+    box-sizing: border-box;
+    width: 100%; /* Поля обмежені розміром блоку */
+}
+
+.double-input input {
+    flex: 1; /* Поля займають однакову ширину */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box; /* Врахування внутрішніх відступів */
+    min-width: 0; /* Запобігає переповненню при дуже малих екранах */
+}
+
+.advanced-search-btn {
+    background-color: #dc6a51;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    align-self: flex-start; /* Вирівнювання кнопки до початку */
+    max-width: 100%; /* Адаптація до контейнера */
+}
+
+.advanced-search-btn:hover {
+    background-color: #b24431;
+}
+
+/* Додатковий медіа-запит для вузьких екранів */
+@media (max-width: 600px) {
+    .search-row {
+        flex-direction: column; /* Поля стають вертикальними */
+    }
+
+    .double-input {
+        flex-direction: column; /* Поля "Від" та "До" також стають вертикальними */
+    }
+}
+
+#condition-select {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#condition-select option[disabled] {
+    color: rgba(0, 0, 0, 0.6); /* Прозорість опису */
+    font-size: 12px; /* Зменшений шрифт для описів */
+    padding-left: 10px; /* Відступ для візуального вирівнювання */
+}
+
+
