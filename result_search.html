@@ -54,24 +54,187 @@
 </div>
 
 <!-- Результати пошуку -->
-<div class="results-container">
-    <!-- Панель фільтрів -->
-    <div class="search-filters">
-        <strong>Пошукові параметри:</strong>
-        <div id="filter-tags" class="filter-tags">
-            <!-- Теги пошуку будуть динамічно додані сюди -->
+<div class="search-results-container">
+    <!-- Панель фільтрів (ліворуч) -->
+    <aside class="filters-panel">
+        <div class="search-filters">
+            <strong>Пошукові параметри:</strong>
+            <div id="filter-tags" class="filter-tags">
+                <!-- Теги пошуку будуть динамічно додані сюди -->
+            </div>
+            <button class="refine-search-btn" onclick="refineSearch()">Уточнити пошук</button>
         </div>
-        <button class="refine-search-btn" onclick="refineSearch()">Уточнити пошук</button>
-    </div>
+        <!-- Розширений пошук -->
+        <div class="advanced-search-container">
+            <h3>Розширений пошук</h3>
+
+            <!-- Тип транспорту -->
+            <div class="search-row">
+                <label for="vehicleType">Тип транспорту:</label>
+                <select id="vehicleType" name="vehicleType">
+                    <option value="any">Будь-який</option>
+                    <option value="легкові">Легкові</option>
+                    <option value="мото">Мото</option>
+                    <option value="вантажівки">Вантажівки</option>
+                    <option value="причепи">Причепи</option>
+                    <option value="спецтехніка">Спецтехніка</option>
+                    <option value="сільгосптехніка">Сільгосптехніка</option>
+                    <option value="автобуси">Автобуси</option>
+                    <option value="водний">Водний транспорт</option>
+                    <option value="повітряний">Повітряний транспорт</option>
+                    <option value="автобудинки">Автобудинки</option>
+                </select>
+            </div>
+
+            <!-- Марка -->
+            <div class="search-row">
+                <label for="brand">Марка:</label>
+                <input type="text" id="brand" name="brand" placeholder="Марка">
+            </div>
+
+            <!-- Модель -->
+            <div class="search-row">
+                <label for="model">Модель:</label>
+                <input type="text" id="model" name="model" placeholder="Модель">
+            </div>
+
+            <!-- Регіон -->
+            <div class="search-row">
+                <label for="region">Регіон:</label>
+                <input type="text" id="region" name="region" placeholder="Регіон">
+            </div>
+
+            <!-- Рік -->
+            <div class="search-row">
+                <label>Рік:</label>
+                <div class="double-input">
+                    <input type="number" id="yearFrom" placeholder="Від" min="1900">
+                    <input type="number" id="yearTo" placeholder="До" max="2024">
+                </div>
+            </div>
+
+            <!-- Ціна -->
+            <div class="search-row">
+                <label>Ціна (₴):</label>
+                <div class="double-input">
+                    <input type="number" id="priceFrom" placeholder="Від" min="0">
+                    <input type="number" id="priceTo" placeholder="До" min="0">
+                </div>
+            </div>
+
+            <!-- Тип палива -->
+            <div class="search-row">
+                <label for="fuel-type">Тип палива:</label>
+                <select id="fuel-type">
+                    <option value="any">Будь-який</option>
+                    <option value="gasoline">Бензин</option>
+                    <option value="diesel">Дизель</option>
+                    <option value="electric">Електро</option>
+                </select>
+            </div>
+
+            <!-- Тип приводу -->
+            <div class="search-row">
+                <label for="drive-type">Тип приводу:</label>
+                <select id="drive-type">
+                    <option value="any">Будь-який</option>
+                    <option value="front">Передній</option>
+                    <option value="rear">Задній</option>
+                    <option value="all-wheel">Повний</option>
+                </select>
+            </div>
+
+            <!-- Об'єм двигуна -->
+            <div class="search-row">
+                <label>Об'єм двигуна (л):</label>
+                <div class="double-input">
+                    <input type="number" placeholder="Від" min="0">
+                    <input type="number" placeholder="До" min="0">
+                </div>
+            </div>
+
+            <!-- Розмитнені -->
+            <div class="search-row">
+                <label for="customs-cleared">Розмитнені:</label>
+                <input type="checkbox" id="customs-cleared">
+            </div>
+            <!-- Сортування -->
+            <div class="search-row">
+                <label for="sorting">Сортування:</label>
+                <select id="sorting" name="sorting">
+                    <option value="default">Звичайне</option>
+                    <option value="price-asc">Від дешевих до дорогих</option>
+                    <option value="price-desc">Від дорогих до дешевих</option>
+                    <option value="date-added">Дата додавання</option>
+                    <option value="year-asc">Рік випуску, за зростанням</option>
+                    <option value="year-desc">Рік випуску, за спаданням</option>
+                    <option value="mileage-asc">Пробіг, за зростанням</option>
+                    <option value="mileage-desc">Пробіг, за спаданням</option>
+                </select>
+            </div>
 
 
-    <!-- Список результатів -->
-    <div id="results-container">
-        <h3>Результати:</h3>
-        <p>Список авто або повідомлення про відсутність результатів.</p>
-    </div>
+            <!-- Пошук по VIN, ID або номеру -->
+            <div class="search-row">
+                <label for="vin-search">Пошук по ID, VIN-коду чи держ. номеру:</label>
+                <input type="text" id="vin-search" placeholder="Введіть дані">
+            </div>
+
+            <!-- КПП -->
+            <div class="search-row">
+                <label for="transmission">КПП:</label>
+                <select id="transmission" name="transmission">
+                    <option value="manual">Ручна / Механіка</option>
+                    <option value="automatic">Автомат</option>
+                    <option value="tiptronic">Тіптронік</option>
+                    <option value="robot">Робот</option>
+                    <option value="variator">Варіатор</option>
+                </select>
+            </div>
+
+
+            <!-- Стан -->
+            <div class="search-row">
+                <label for="condition-select">Стан:</label>
+                <select id="condition-select" name="condition">
+                    <option value="full-intact">Повністю непошкоджене</option>
+                    <option disabled>Пошкодження або раніше відремонтовані пошкодження відсутні.</option>
+                    <option value="professionally-repaired">Професійно відремонтовані пошкодження</option>
+                    <option disabled>Пошкодження усунуті, не потребує ремонту.</option>
+                    <option value="not-repaired">Не відремонтовані пошкодження</option>
+                    <option disabled>Наприклад, після ДТП, сліди граду, пошкодження кузова, несправність рульового управління, коробки передач, осей і т.д.</option>
+                    <option value="not-running">Не на ходу / На запчастини</option>
+                    <option disabled>Через ДТП, пожежу, несправності двигуна і т.д.</option>
+                </select>
+            </div>
+
+
+            <!-- Кнопка -->
+            <button class="advanced-search-btn" onclick="performSearch()">Пошук</button>
+        </div>
+
+
+
+    </aside>
+
+    <!-- Список результатів (праворуч) -->
+    <main class="results-panel">
+        <div id="results-container" class="results-container">
+            <div class="result-item">
+                <div class="result-item-content">
+                    <!-- Вміст результату -->
+                </div>
+            </div>
+            <hr class="divider">
+            <div class="result-item">
+                <div class="result-item-content">
+                    <!-- Вміст результату -->
+                </div>
+            </div>
+        </div>
+    </main>
 </div>
-\
+
 <!-- Слайдер -->
 <div class="slider-container">
     <button class="slider-button prev">&#x276E;</button>
