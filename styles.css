@@ -15,6 +15,7 @@ body {
 
     position: relative;
     z-index: 500;
+    flex-wrap: wrap;
 }
 
 /* Стиль для лівого блоку меню */
@@ -109,6 +110,7 @@ body {
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #ddd;
+    flex-wrap: wrap;
 }
 
 .bottom-menu .menu-left {
@@ -195,6 +197,7 @@ body {
     align-items: flex-start;
     padding: 20px;
     background-color: #E8E8E8;
+    flex-wrap: wrap;
 }
 
 /* Ліва частина */
@@ -376,6 +379,7 @@ body {
     width: 100%;
     height: 360px;
     overflow: hidden;
+    flex-wrap: wrap;
 }
 
 /* Ліва частина */
@@ -586,7 +590,7 @@ body {
     font-size: 16px;
     color: #2B2F56;
     margin-top: 10px;
-    opacity: 0; /* Початково приховано */
+    opacity: 1; /* Початково приховано */
     transition: opacity 0.3s ease;
 }
 
@@ -605,51 +609,7 @@ body {
     color: #2B2F56;
     margin-top: 10px;
 }
-/* результат пошуку */
 
-.search-results {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    display: none; /* Сховати за замовчуванням */
-}
-
-.search-results h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #2B2F56;
-}
-
-.result-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 15px;
-    gap: 15px;
-}
-
-.result-item img {
-    width: 120px;
-    height: 80px;
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-.result-item .details {
-    flex: 1;
-}
-
-.result-item .details h4 {
-    font-size: 16px;
-    color: #DC6A51;
-    margin: 0;
-}
-
-.result-item .details p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #2B2F56;
-}
 
 /* Слайдер */
 .slider-container {
@@ -887,7 +847,7 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     background-color: #2B2F56;
-    padding: 40px;
+    padding: 40px 100px;
     color: #fff;
     gap: 20px;
     flex-wrap: wrap; /* Адаптація для маленьких екранів */
