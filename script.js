@@ -31,6 +31,30 @@ function toggleVinBlock(tab) {
     document.querySelectorAll('.tab').forEach(tabElement => tabElement.classList.remove('active'));
     document.querySelector(`.tab[onclick="toggleVinBlock('${tab}')"]`).classList.add('active');
 }
+function handleVoiceSearch(query) {
+    console.log('Розпізнаний текст:', query);
+
+    // Правила: транслітерація, велика літера, видалення точки
+    const processedQuery = formatSearchQuery(query);
+    console.log('Оброблений текст для пошуку:', processedQuery);
+
+    // Розділяємо текст для формування критеріїв
+    const [brand, model, region] = processedQuery.split(' ');
+
+    const searchCriteria = {
+        vehicleType: 'any',
+        brand: brand || '',
+        model: model || '',
+        region: region || '',
+    };
+
+    // Формуємо параметри для URL
+    const params = new URLSearchParams(searchCriteria).toString();
+
+    // Перехід на сторінку результатів із параметрами
+    window.location.href = `result_search.html?${params}`;
+}
+
 
 document.querySelector('.listen-button').addEventListener('click', () => {
     const microphone = document.querySelector('.microphone');
@@ -44,15 +68,104 @@ document.querySelector('.listen-button').addEventListener('click', () => {
         circle.classList.add('shrink');
     });
 
-    // Додаткові елементи (хвилі та текст)
+    if (!('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
+        alert('Ваш браузер не підтримує голосове розпізнавання.');
+        return;
+    }
+
+    // Ініціалізація розпізнавання мови
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'uk-UA'; // Встановлюємо українську мову
+    recognition.interimResults = false;
+
     const soundWave = document.querySelector('.sound-wave');
     const listeningText = document.querySelector('.listening-text');
 
+    // Показуємо індикатори "Прослуховуємо"
     soundWave.classList.remove('hidden');
     listeningText.classList.remove('hidden');
+    listeningText.textContent = 'Прослуховуємо...';
     soundWave.style.opacity = '1';
     listeningText.style.opacity = '1';
+
+    recognition.start();
+
+    recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript.toLowerCase();
+
+        // Змінюємо текст на "Обробляємо запит..."
+        listeningText.textContent = 'Обробляємо запит...';
+
+        // Використовуємо примусову затримку для оновлення тексту
+        setTimeout(() => {
+            handleVoiceSearch(transcript);
+        }, 1000); // Невелика затримка для відображення тексту
+    };
+
+    recognition.onerror = (event) => {
+        listeningText.textContent = 'Помилка. Спробуйте знову.';
+        setTimeout(() => {
+            soundWave.classList.add('hidden');
+            listeningText.classList.add('hidden');
+        }, 2000);
+    };
+
+    recognition.onend = () => {
+        // Приховуємо індикатори, якщо розпізнавання завершилось без результату
+        if (listeningText.textContent === 'Прослуховуємо...') {
+            listeningText.textContent = 'Завершено без результату.';
+            setTimeout(() => {
+                soundWave.classList.add('hidden');
+                listeningText.classList.add('hidden');
+            }, 2000);
+        }
+    };
 });
+
+
+function formatSearchQuery(query) {
+    const map = {
+        'а': 'a', 'б': 'b', 'в': 'v', 'г': 'h', 'ґ': 'g',
+        'д': 'd', 'е': 'e', 'є': 'ye', 'ж': 'zh', 'з': 'z',
+        'и': 'y', 'і': 'i', 'ї': 'yi', 'й': 'y', 'к': 'k',
+        'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p',
+        'р': 'r', 'с': 's', 'т': 't', 'у': 'u', 'ф': 'f',
+        'х': 'kh', 'ц': 'ts', 'ч': 'ch', 'ш': 'sh', 'щ': 'shch',
+        'ь': '', 'ю': 'yu', 'я': 'ya', ' ': ' ', '.': ''
+    };
+
+    // Таблиця виключень (слова, які транслітеруються по-особливому)
+    const exceptions = {
+        'королла': 'Corolla',
+        'тойота': 'Toyota',
+        'київ': 'Kyiv',
+        'львів': 'Lviv'
+    };
+
+    // Розділяємо запит на слова
+    const words = query.split(' ');
+
+    // Перевіряємо кожне слово
+    const formattedWords = words.map(word => {
+        const lowerWord = word.toLowerCase();
+
+        // Якщо є виключення, повертаємо спеціальне значення
+        if (exceptions[lowerWord]) {
+            return exceptions[lowerWord];
+        }
+
+        // Інакше транслітеруємо та форматумо за загальними правилами
+        const transliterated = lowerWord
+            .split('')
+            .map(char => map[char] || char)
+            .join('');
+
+        return transliterated.charAt(0).toUpperCase() + transliterated.slice(1).replace(/\.$/, '');
+    });
+
+    return formattedWords.join(' ');
+}
+
 
 
 
